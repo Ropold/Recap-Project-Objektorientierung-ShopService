@@ -18,11 +18,15 @@ public class Main {
 
         OrderListRepo orderListRepo1 = new OrderListRepo();
         orderListRepo1.addOrder(order1);
+        orderListRepo1.addOrder(order2);
         System.out.println("Order List Repository: " + orderListRepo1);
 
-        //ShopService shopService1 = new ShopService(productRepo1, orderListRepo1);
-        ShopService shopService1 = new ShopService();
+        ShopService shopService1 = new ShopService(productRepo1, orderListRepo1);
         shopService1.addOrder(productIds);
+
+        List<Order> completedOrder = shopService1.getOrdersByStatus(OrderStatus.COMPLETED);
+        System.out.println(completedOrder);
+
 
 
     }
